@@ -1,12 +1,12 @@
 import React from 'react';
-import {RootStackParamList} from '../interfaces';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {theme} from '../themes';
+import {RootStackParamList} from '../../interfaces';
+import {theme} from '../../themes';
 import {
   AllPurchasesScreen,
   CreatePurchaseScreen,
   EditPurchaseScreen,
-} from '../screens';
+} from '../../screens';
 
 export const StackNavigator = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();

@@ -11,7 +11,7 @@ import {StatusBar, useColorScheme} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {StackNavigator} from './src/components';
+import {StackNavigator} from './src/components/common';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';

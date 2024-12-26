@@ -5,6 +5,8 @@ import {RootStackParamList} from '../interfaces';
 import {useNavigation} from '@react-navigation/native';
 import {usePurchases} from '../hooks/use-purchases.hook';
 import {textStyles} from '../styles';
+import {FlatList} from 'react-native-gesture-handler';
+import {GoToEditPurchaseButton} from '../components/all-purchases/go-to-edit-purchase-button.component';
 
 export type AllPurchasesScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -23,7 +25,7 @@ export const AllPurchasesScreen = () => {
         <Text style={textStyles.textSuccess}>Loading purchases...</Text>
       ) : errorLoadingPurchases ? (
         <Text style={textStyles.textError}>
-          Error loading budgets and transactions
+          Error loading purchases and transactions
         </Text>
       ) : purchases.length < 1 ? (
         <>
@@ -35,16 +37,16 @@ export const AllPurchasesScreen = () => {
         </>
       ) : (
         <View>
-          <Text style={{color: 'black'}}>
-            This is the screen for viewing all the purchases
-          </Text>
+          <FlatList
+            keyExtractor={item => item.id}
+            renderItem={({item}) => (
+              <GoToEditPurchaseButton purchaseData={item} />
+            )}
+            data={purchases}
+          />
           <Button
             onPress={() => navigation.navigate('CreatePurchase')}
             title="Go to create purchase"
-          />
-          <Button
-            onPress={() => navigation.navigate('EditPurchase')}
-            title="Go to edit purchase"
           />
         </View>
       )}
