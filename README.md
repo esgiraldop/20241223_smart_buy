@@ -1,8 +1,8 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# Getting Started for starting up SmartBuy with node
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
@@ -46,34 +46,32 @@ If everything is set up _correctly_, you should see your new app running in your
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
 ## Congratulations! :tada:
 
 You've successfully run and modified your React Native App. :partying_face:
 
-### Now what?
+# User manual of SmartBuy
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+SmartBuy allows you to take note of your Purchases and keep track of your expenses, allowing to see some statistics of your financial behavior. The information is stored exclusively in your phone allowing more privacy.
 
-# Troubleshooting
+Next, a tutorial of the application is presented
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## 1: All purchases screen
 
-# Learn More
+Here you can visualize all the purchases you have saved in your phone with their details.
 
-To learn more about React Native, take a look at the following resources:
+At the top, you can see a button to create a new purchase
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+![alt text](image.png)
+
+## 2: Create purchase screen
+
+This button will take you to a form to create a purchase, providing all the relevant pieces of information. When you hit submit, the purchase is created and the user is taken back to the main screen in which will be able to see the new purchase.
+
+![alt text](image-1.png)
+
+## 2: Edit purchase screen
+
+Back to the all purchases page, If you tap on any of the purchases, it will take you to a form in which you can edit the information of the purchase. The data of the purchase you are editing is preloaded in the form so you can know what are the actual values. When you hit submit, the purchase is updated.
+
+![alt text](image-2.png)
