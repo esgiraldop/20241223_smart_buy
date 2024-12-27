@@ -32,7 +32,7 @@ export class PurchasesService {
     }
   }
 
-  static async addPurchase(newPurchase: IPurchase): Promise<void> {
+  static async create(newPurchase: IPurchase): Promise<void> {
     try {
       const purchases = await this.getAll();
       purchases.push(newPurchase);
@@ -42,7 +42,7 @@ export class PurchasesService {
     }
   }
 
-  static async editPurchase(updatedPurchase: IPurchase): Promise<void> {
+  static async update(updatedPurchase: IPurchase): Promise<void> {
     try {
       const purchases = await this.getAll();
       const index = purchases.findIndex(p => p.id === updatedPurchase.id);
@@ -58,7 +58,7 @@ export class PurchasesService {
     }
   }
 
-  static async deletePurchase(id: string): Promise<void> {
+  static async delete(id: string): Promise<void> {
     try {
       const purchases = await this.getAll();
       const updatedPurchases = purchases.filter(p => p.id !== id);

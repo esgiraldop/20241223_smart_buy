@@ -5,4 +5,5 @@ export interface IPurchase {
   date: string;
   state: string; // Pending | Purchased
   category: string;
+  description: string;
 }
