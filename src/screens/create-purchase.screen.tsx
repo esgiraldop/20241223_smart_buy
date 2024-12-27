@@ -41,8 +41,8 @@ export const CreatePurchaseScreen = (): React.JSX.Element => {
     name: '',
     amount: 0,
     date: '',
-    state: 'Pending', // Pending | Purchased
-    category: '',
+    state: 'Select Category', // Pending | Purchased
+    category: 'Select Category',
     description: '',
   };
 
@@ -60,6 +60,13 @@ export const CreatePurchaseScreen = (): React.JSX.Element => {
           validationSchema={priceSchema}
           onSubmit={onSubmit}>
           {formikProps => {
+            console.log('\nformikProps.values: ', formikProps.values);
+            console.log('formikProps.isValid: ', formikProps.isValid);
+            console.log('formikProps.errors: ', formikProps.errors);
+            console.log(
+              'formikProps.touched.category: ',
+              formikProps.touched.category,
+            );
             return (
               <View style={containerStyles.centeredContainerLightBc}>
                 <Text style={textStyles.textBody2}>Name</Text>
@@ -106,7 +113,7 @@ export const CreatePurchaseScreen = (): React.JSX.Element => {
                   ]}
                   onChangeText={formikProps.handleChange('date')}
                   onBlur={formikProps.handleBlur('date')}
-                  value={formikProps.values.name}
+                  value={formikProps.values.date}
                   placeholder="Enter date"
                   placeholderTextColor={theme.colors.textSecondary}
                 />
@@ -117,15 +124,35 @@ export const CreatePurchaseScreen = (): React.JSX.Element => {
                 )}
 
                 <Text style={textStyles.textBody2}>State</Text>
-                <DropdownCategories categories={stateCategories} />
-                {formikProps.touched.state && (
-                  <Text style={textStyles.textError} />
+                <DropdownCategories
+                  categories={stateCategories}
+                  value={formikProps.values.state}
+                  onChange={selectedValue => {
+                    formikProps.setFieldValue('state', selectedValue);
+                  }}
+                  onBlur={() => formikProps.setFieldTouched('state', true)}
+                  placeholder="Select state"
+                />
+                {formikProps.touched.state && formikProps.errors.state && (
+                  <Text style={textStyles.textError}>
+                    {formikProps.errors.state}
+                  </Text>
                 )}
 
                 <Text style={textStyles.textBody2}>Category</Text>
-                <DropdownCategories categories={categories} />
-                {formikProps.touched.category && (
-                  <Text style={textStyles.textError} />
+                <DropdownCategories
+                  categories={categories}
+                  value={formikProps.values.category}
+                  onChange={selectedValue => {
+                    formikProps.setFieldValue('category', selectedValue);
+                  }}
+                  onBlur={() => formikProps.setFieldTouched('category', true)}
+                  placeholder="Select category"
+                />
+                {formikProps.touched.category && formikProps.errors.state && (
+                  <Text style={textStyles.textError}>
+                    {formikProps.errors.category}
+                  </Text>
                 )}
 
                 <Text style={textStyles.textBody2}>Description</Text>
@@ -148,7 +175,6 @@ export const CreatePurchaseScreen = (): React.JSX.Element => {
                       {formikProps.errors.description}
                     </Text>
                   )}
-
                 <TouchableOpacity
                   style={buttonStyle.acceptButton}
                   onPress={() => formikProps.handleSubmit()}

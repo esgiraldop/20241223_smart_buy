@@ -12,15 +12,21 @@ interface DropdownItem {
 
 interface IDropdownCategories {
   categories: string[];
+  value: string;
+  onChange: (value: string) => void;
+  onBlur: (value: string) => void;
+  placeholder: string;
 }
 
 // Dropdown Component
 export const DropdownCategories = ({
   categories,
+  value,
+  onChange,
+  onBlur,
+  placeholder,
 }: IDropdownCategories): React.JSX.Element => {
-  const [value, setValue] = useState<string | null>(null);
   const [isFocus, setIsFocus] = useState<boolean>(false);
-
   // Dropdown Data
   const data: DropdownItem[] = categories.map(category => ({
     label: category,
@@ -61,14 +67,17 @@ export const DropdownCategories = ({
         maxHeight={300}
         labelField="label"
         valueField="value"
-        placeholder={!isFocus ? 'Select category' : '...'}
+        placeholder={!isFocus ? placeholder : '...'}
         searchPlaceholder="Search..."
         value={value}
         onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
-        onChange={(item: DropdownItem) => {
-          setValue(item.value);
+        onBlur={() => {
           setIsFocus(false);
+          onBlur(value);
+        }}
+        onChange={item => {
+          setIsFocus(false);
+          onChange(item.value);
         }}
       />
     </View>
