@@ -196,7 +196,9 @@ export const EditPurchaseScreen = () => {
                       style={buttonStyle.acceptButton}
                       onPress={() => formikProps.handleSubmit()}
                       disabled={
-                        !formikProps.isValid || formikProps.isSubmitting
+                        !formikProps.isValid ||
+                        formikProps.isSubmitting ||
+                        !purchaseInfo
                       }>
                       {formikProps.isSubmitting ? (
                         <ActivityIndicator
