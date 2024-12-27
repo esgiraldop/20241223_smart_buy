@@ -14,9 +14,7 @@ export class PurchasesService {
     }
   }
 
-  static async getSinglePurchase(
-    puchaseId: string,
-  ): Promise<IPurchase[] | null> {
+  static async getSinglePurchase(puchaseId: string): Promise<IPurchase | null> {
     try {
       const jsonValue = await AsyncStorage.getItem(this.PURCHASES_KEY);
       const parsedJson = jsonValue != null ? JSON.parse(jsonValue) : [];
@@ -25,7 +23,7 @@ export class PurchasesService {
       }
       return parsedJson.filter(
         (purchase: IPurchase) => purchase.id === puchaseId,
-      );
+      )[0];
     } catch (e) {
       console.error('Error reading purchases from Async Storage:', e);
       return null;

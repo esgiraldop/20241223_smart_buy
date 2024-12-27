@@ -38,15 +38,22 @@ export const AllPurchasesScreen = () => {
       ) : (
         <View>
           <FlatList
+            ListHeaderComponent={
+              <>
+                <Button
+                  onPress={() => navigation.navigate('CreatePurchase')}
+                  title="Create purchase"
+                />
+                <Text style={{color: 'black'}}>
+                  Click on any purchase to edit it
+                </Text>
+              </>
+            }
             keyExtractor={item => item.id}
             renderItem={({item}) => (
               <GoToEditPurchaseButton purchaseData={item} />
             )}
             data={purchases}
-          />
-          <Button
-            onPress={() => navigation.navigate('CreatePurchase')}
-            title="Go to create purchase"
           />
         </View>
       )}

@@ -60,13 +60,6 @@ export const CreatePurchaseScreen = (): React.JSX.Element => {
           validationSchema={priceSchema}
           onSubmit={onSubmit}>
           {formikProps => {
-            console.log('\nformikProps.values: ', formikProps.values);
-            console.log('formikProps.isValid: ', formikProps.isValid);
-            console.log('formikProps.errors: ', formikProps.errors);
-            console.log(
-              'formikProps.touched.category: ',
-              formikProps.touched.category,
-            );
             return (
               <View style={containerStyles.centeredContainerLightBc}>
                 <Text style={textStyles.textBody2}>Name</Text>

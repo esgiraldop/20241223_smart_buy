@@ -24,7 +24,7 @@ export const GoToEditPurchaseButton = ({purchaseData}: IPurchaseData) => {
   return (
     <TouchableOpacity
       style={[buttonStyle.transactionDetailsButton]}
-      onPress={() => navigation.navigate('PurchaseDetails', {purchaseId: id})}>
+      onPress={() => navigation.navigate('EditPurchase', {purchaseId: id})}>
       <View style={styles.textBox}>
         <Text style={textStyles.textH3Dark}>{name}</Text>
         <Text style={textStyles.textBody2}>
